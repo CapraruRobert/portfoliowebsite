@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A&E Photography and Films | Wedding & Baptism Videos</title>
+  <meta name="description" content="A&E Photography and Films - Professional wedding and baptism videography based in Bucharest. Capturing authentic moments with cinematic storytelling." />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ---- Header / Navigation ---- */
+    header {
+      background: #fff;
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    nav a {
+      color: #333;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #999;
+    }
+
+    .language-switcher {
+      display: flex;
+      gap: 0.5rem;
+      margin-left: auto;
+    }
+
+    .lang-btn {
+      padding: 0.4rem 0.8rem;
+      background: transparent;
+      border: 1px solid #333;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+    }
+
+    .lang-btn.active {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: #f0f0f0;
+    }
+
+    /* ---- Hero Section ---- */
+    .hero {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #fff;
+      padding: 8rem 2rem;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #bbb;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: #ddd;
+      line-height: 1.8;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 3px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: #000;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #333;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ---- About Section ---- */
+    .about {
+      background: #fff;
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    .section-header p {
+      font-size: 1rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .about-content p {
+      color: #666;
+      margin-bottom: 1rem;
+      line-height: 1.9;
+    }
+
+    .about-image {
+      background: #e8e8e8;
+      aspect-ratio: 16 / 9;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ---- Services Section ---- */
+    .services {
+      background: #f8f8f8;
+      padding: 6rem 2rem;
+    }
+
+    .services-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 3px;
+      border-top: 4px solid #000;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .service-card ul {
+      list-style: none;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card li {
+      padding: 0.4rem 0;
+    }
+
+    .service-card li:before {
+      content: "✓ ";
+      color: #000;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .service-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    /* ---- Portfolio Section ---- */
+    .portfolio {
+      background: #fff;
+      padding: 6rem 2rem;
+    }
+
+    .portfolio-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .portfolio-item {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 3px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .portfolio-item img,
+    .portfolio-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+      display: block;
+    }
+
+    .portfolio-item:hover img,
+    .portfolio-item:hover video {
+      transform: scale(1.05);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    .portfolio-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .portfolio-type {
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+    /* ---- Testimonials Section ---- */
+    .testimonials {
+      background: #f8f8f8;
+      padding: 6rem 2rem;
+    }
+
+    .testimonials-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 3px;
+      border-left: 4px solid #000;
+    }
+
+    .testimonial-text {
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.9;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.3rem;
+    }
+
+    .testimonial-event {
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    /* ---- Contact Section ---- */
+    .contact {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 6rem 2rem;
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.9rem;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 3px;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #999;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item {
+      margin-bottom: 2rem;
+    }
+
+    .contact-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-value {
+      font-size: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      transition: background 0.3s;
+    }
+
+    .social-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ---- Footer ---- */
+    footer {
+      background: #000;
+      color: #999;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 1.5rem;
+        font-size: 0.8rem;
+      }
+
+      .about-grid,
+      .contact-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 4rem 2rem;
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">A&E FILMS</div>
+      <nav>
+        <ul>
+          <li><a href="#home" data-en="Home" data-ro="Acasă">Home</a></li>
+          <li><a href="#about" data-en="About" data-ro="Despre">About</a></li>
+          <li><a href="#services" data-en="Services" data-ro="Servicii">Services</a></li>
+          <li><a href="#portfolio" data-en="Portfolio" data-ro="Portofoliu">Portfolio</a></li>
+          <li><a href="#contact" data-en="Contact" data-ro="Contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="language-switcher">
+        <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="setLanguage('ro')">RO</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-eyebrow" data-en="Wedding & Baptism Videography" data-ro="Videografie Nunți & Botezuri">Wedding & Baptism Videography</div>
+    <h1 data-en="Authentic Stories, Beautifully Told" data-ro="Povești Autentice, Frumos Povestite">Authentic Stories, Beautifully Told</h1>
+    <p data-en="We capture the real emotions and candid moments of your most important day. No staged moments, just pure, authentic storytelling." data-ro="Capturam emoțiile reale și momentele spontane ale celei mai importante zile a ta. Fără momente puse în scenă, doar povești autentice și pure.">We capture the real emotions and candid moments of your most important day. No staged moments, just pure, authentic storytelling.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary" data-en="Get in Touch" data-ro="Contactează-ne">Get in Touch</a>
+      <a href="#portfolio" class="btn btn-secondary" data-en="View Portfolio" data-ro="Vezi Portofoliul">View Portfolio</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="section-header">
+      <h2 data-en="About Us" data-ro="Despre Noi">About Us</h2>
+      <p data-en="Cinematic storytelling for your most treasured moments" data-ro="Povești cinematice pentru momentele tale mai prețioase">Cinematic storytelling for your most treasured moments</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-content">
+        <h3 data-en="Who We Are" data-ro="Cine Suntem">Who We Are</h3>
+        <p data-en="We are Alex and Elena Capraru, a husband-and-wife team of photographer and videographer based in Bucharest. With years of experience in wedding and baptism cinematography, we specialize in capturing the essence of your celebration." data-ro="Suntem Alex și Elena Capraru, o echipă de soț și soție - videograf și fotografă, cu bază în București. Cu ani de experiență în cinematografie de nunți și botezuri, ne specializăm în captarea esenței celebrării tale.">We are Alex and Elena Capraru, a husband-and-wife team of photographer and videographer based in Bucharest. With years of experience in wedding and baptism cinematography, we specialize in capturing the essence of your celebration.</p>
+        <p data-en="Our approach is simple: we let moments unfold naturally. We don't over-direct or over-produce. Instead, we document the genuine emotions, the laughter, the tears, and the love that make your day truly special." data-ro="Abordarea noastră este simplă: lăsăm momentele să se desfășoare în mod natural. Nu forțăm decor sau producție excesivă. În schimb, documentez emoțiile autentice, râsul, lacrimile și dragostea care fac ziua ta cu adevărat specială.">Our approach is simple: we let moments unfold naturally. We don't over-direct or over-produce. Instead, we document the genuine emotions, the laughter, the tears, and the love that make your day truly special.</p>
+        <p data-en="Every film is a masterpiece, edited with cinematic color grading and clean sound design to create something timeless—a gift you'll treasure for generations." data-ro="Fiecare film este o capodoperă, editată cu gradări de culoare cinematografice și un design sonor clar pentru a crea ceva atempora - un dar pe care îl vei aprecia pentru generații.">Every film is a masterpiece, edited with cinematic color grading and clean sound design to create something timeless—a gift you'll treasure for generations.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=450&fit=crop" alt="Wedding ceremony" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="services-container">
+      <div class="section-header">
+        <h2 data-en="Our Services" data-ro="Serviciile Noastre">Our Services</h2>
+        <p data-en="Tailored videography packages for every celebration" data-ro="Pachete de videografie adaptate fiecărei celebrări">Tailored videography packages for every celebration</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <h3 data-en="Civil Wedding" data-ro="Nuntă Civilă">Civil Wedding</h3>
+          <ul>
+            <li data-en="Full ceremony coverage" data-ro="Acoperire completă a ceremoniei">Full ceremony coverage</li>
+            <li data-en="Couple session" data-ro="Sesiune de cuplu">Couple session</li>
+            <li data-en="3-5 min highlight film" data-ro="Film de rezumat 3-5 min">3-5 min highlight film</li>
+            <li data-en="Full ceremony video" data-ro="Video complet al ceremoniei">Full ceremony video</li>
+            <li data-en="4K quality" data-ro="Calitate 4K">4K quality</li>
+          </ul>
+          <div class="service-price" data-en="Starting €800" data-ro="Pornind de la €800">Starting €800</div>
+        </div>
+
+        <div class="service-card">
+          <h3 data-en="Baptism Package" data-ro="Pachet Botez">Baptism Package</h3>
+          <ul>
+            <li data-en="Morning preparations" data-ro="Pregătiri matinale">Morning preparations</li>
+            <li data-en="Ceremony coverage" data-ro="Acoperire ceremonie">Ceremony coverage</li>
+            <li data-en="Family moments" data-ro="Momente de familie">Family moments</li>
+            <li data-en="Highlight film" data-ro="Film de rezumat">Highlight film</li>
+            <li data-en="Full day video" data-ro="Video complet al zilei">Full day video</li>
+          </ul>
+          <div class="service-price" data-en="Starting €600" data-ro="Pornind de la €600">Starting €600</div>
+        </div>
+
+        <div class="service-card">
+          <h3 data-en="Full Day Story" data-ro="Povestea Zilei Complete">Full Day Story</h3>
+          <ul>
+            <li data-en="Up to 10 hours" data-ro="Până la 10 ore">Up to 10 hours</li>
+            <li data-en="Two videographers" data-ro="Doi videografi">Two videographers</li>
+            <li data-en="Full day edit" data-ro="Editare zilei complete">Full day edit</li>
+            <li data-en="5-7 min highlight" data-ro="Rezumat 5-7 min">5-7 min highlight</li>
+            <li data-en="Multiple edits" data-ro="Editări multiple">Multiple edits</li>
+          </ul>
+          <div class="service-price" data-en="Custom Quote" data-ro="Ofertă Personalizată">Custom Quote</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="portfolio" id="portfolio">
+    <div class="portfolio-container">
+      <div class="section-header">
+        <h2 data-en="Recent Films" data-ro="Filme Recente">Recent Films</h2>
+        <p data-en="A selection of our favorite wedding and baptism stories" data-ro="O selecție din poveștile noastre de nunți și botezuri preferate">A selection of our favorite wedding and baptism stories</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=450&fit=crop" alt="Wedding film" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-title" data-en="Wedding Day" data-ro="Ziua Nunții">Wedding Day</div>
+            <div class="portfolio-type" data-en="Civil Wedding • 2024" data-ro="Nuntă Civilă • 2024">Civil Wedding • 2024</div>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1465146072230-91cabc968266?w=800&h=450&fit=crop" alt="Baptism film" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-title" data-en="Baptism Moments" data-ro="Momente de Botez">Baptism Moments</div>
+            <div class="portfolio-type" data-en="Baptism • 2024" data-ro="Botez • 2024">Baptism • 2024</div>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&h=450&fit=crop" alt="Wedding ceremony" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-title" data-en="Religious Ceremony" data-ro="Ceremonie Religioasă">Religious Ceremony</div>
+            <div class="portfolio-type" data-en="Religious Ceremony • 2024" data-ro="Ceremonie Religioasă • 2024">Religious Ceremony • 2024</div>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=450&fit=crop" alt="Couple moment" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-title" data-en="Love Story" data-ro="Povestea de Dragoste">Love Story</div>
+            <div class="portfolio-type" data-en="Civil Wedding • 2023" data-ro="Nuntă Civilă • 2023">Civil Wedding • 2023</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="testimonials-container">
+      <div class="section-header">
+        <h2 data-en="Testimonials" data-ro="Mărturia Clienților">Testimonials</h2>
+        <p data-en="What our clients have to say" data-ro="Ce spun clienții noștri">What our clients have to say</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "The video made us cry when we watched it. You captured every important moment without ever being intrusive. We'll treasure this forever."
+          </div>
+          <div class="testimonial-author">Maria & John</div>
+          <div class="testimonial-event" data-en="Civil Wedding" data-ro="Nuntă Civilă">Civil Wedding</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "Professional, kind, and incredibly talented. The baptism film is something we'll show Emma when she grows up. Highly recommended!"
+          </div>
+          <div class="testimonial-author">Elena & Michael</div>
+          <div class="testimonial-event" data-en="Baptism" data-ro="Botez">Baptism</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "From start to finish, everything was perfectly organized. The cinematography, the editing, the music—it's like a film festival movie about our day."
+          </div>
+          <div class="testimonial-author">Sophie & David</div>
+          <div class="testimonial-event" data-en="Religious Ceremony" data-ro="Ceremonie Religioasă">Religious Ceremony</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "We didn't want anything staged. They understood that immediately and gave us something genuine and beautiful. Exactly what we wanted."
+          </div>
+          <div class="testimonial-author">Lucas & Anna</div>
+          <div class="testimonial-event" data-en="Civil Wedding" data-ro="Nuntă Civilă">Civil Wedding</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <div class="section-header" style="color: #fff; margin-bottom: 3rem;">
+        <h2 data-en="Let's Create Your Story" data-ro="Să Creăm Povestea Ta">Let's Create Your Story</h2>
+        <p style="color: #bbb;" data-en="Tell us about your event and we'll be in touch within 24 hours" data-ro="Spune-ne despre evenimentul tău și ne vom pune în legătură în 24 de ore">Tell us about your event and we'll be in touch within 24 hours</p>
+      </div>
+
+      <div class="contact-grid">
+        <form class="contact-form" onsubmit="handleFormSubmit(event);">
+          <div class="form-group">
+            <label for="name" data-en="Name *" data-ro="Nume *">Name *</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email" data-en="Email *" data-ro="Email *">Email *</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone" data-en="Phone *" data-ro="Telefon *">Phone *</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+
+          <div class="form-group">
+            <label for="event" data-en="Event Type *" data-ro="Tip Eveniment *">Event Type *</label>
+            <select id="event" name="event" required>
+              <option value="" data-en="Select an option" data-ro="Selectează o opțiune">Select an option</option>
+              <option value="civil-wedding" data-en="Civil Wedding" data-ro="Nuntă Civilă">Civil Wedding</option>
+              <option value="religious-wedding" data-en="Religious Wedding" data-ro="Nuntă Religioasă">Religious Wedding</option>
+              <option value="baptism" data-en="Baptism" data-ro="Botez">Baptism</option>
+              <option value="other" data-en="Other" data-ro="Altele">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date" data-en="Event Date (approx.)" data-ro="Data Evenimentului (aprox.)">Event Date (approx.)</label>
+            <input type="date" id="date" name="date" />
+          </div>
+
+          <div class="form-group">
+            <label for="message" data-en="Tell us about your event" data-ro="Spune-ne despre evenimentul tău">Tell us about your event</label>
+            <textarea id="message" name="message" placeholder="Venue, guest count, any specific requests..." data-placeholder-en="Venue, guest count, any specific requests..." data-placeholder-ro="Locație, număr de invitați, cerințe speciale..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" data-en="Send Inquiry" data-ro="Trimite Interogare">Send Inquiry</button>
+        </form>
+
+        <div class="contact-info">
+          <h3 data-en="Get in Touch" data-ro="Contactează-ne">Get in Touch</h3>
+
+          <div class="contact-item">
+            <div class="contact-label" data-en="Email" data-ro="Email">Email</div>
+            <div class="contact-value"><a href="mailto:caprarurobert98@gmail.com">caprarurobert98@gmail.com</a></div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-label" data-en="Phone" data-ro="Telefon">Phone</div>
+            <div class="contact-value"><a href="tel:+40722882566">+40 722 882 566</a></div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-label" data-en="Location" data-ro="Locație">Location</div>
+            <div class="contact-value" data-en="Bucharest, Romania" data-ro="București, România">Bucharest, Romania</div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-label" data-en="Response Time" data-ro="Timp de Răspuns">Response Time</div>
+            <div class="contact-value" data-en="Within 24 hours" data-ro="În 24 de ore">Within 24 hours</div>
+          </div>
+
+          <h3 style="margin-top: 2.5rem; margin-bottom: 1.5rem;" data-en="Follow Our Work" data-ro="Urmărește Munca Noastră">Follow Our Work</h3>
+          <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61572508550265" target="_blank" title="Facebook">📘</a>
+            <a href="https://www.instagram.com/ae_photography_and_films/" target="_blank" title="Business Instagram">📷</a>
+            <a href="https://www.instagram.com/capraru.alex/" target="_blank" title="Personal Instagram">📸</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 A&E Photography and Films. All Rights Reserved. | <span data-en="Privacy Policy" data-ro="Politica de Confidențialitate">Privacy Policy</span> | <span data-en="Terms of Service" data-ro="Condiții de Serviciu">Terms of Service</span></p>
+  </footer>
+
+  <script>
+    let currentLanguage = 'en';
+
+    function setLanguage(lang) {
+      currentLanguage = lang;
+      
+      // Update button states
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-en]').forEach(element => {
+        if (lang === 'en') {
+          element.textContent = element.getAttribute('data-en');
+        } else if (lang === 'ro') {
+          element.textContent = element.getAttribute('data-ro');
+        }
+      });
+
+      // Update placeholder attributes
+      document.querySelectorAll('[data-placeholder-en]').forEach(element => {
+        if (lang === 'en') {
+          element.placeholder = element.getAttribute('data-placeholder-en');
+        } else if (lang === 'ro') {
+          element.placeholder = element.getAttribute('data-placeholder-ro');
+        }
+      });
+
+      // Update option elements in select
+      document.querySelectorAll('option[data-en]').forEach(option => {
+        if (lang === 'en') {
+          option.textContent = option.getAttribute('data-en');
+        } else if (lang === 'ro') {
+          option.textContent = option.getAttribute('data-ro');
+        }
+      });
+
+      // Save language preference
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Load saved language preference on page load
+    window.addEventListener('load', function() {
+      const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+      if (savedLang !== 'en') {
+        document.querySelector(`button[onclick="setLanguage('${savedLang}')"]`).click();
+      }
+    });
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+
+      console.log({
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        event: formData.get('event'),
+        date: formData.get('date'),
+        message: formData.get('message')
+      });
+
+      const message = currentLanguage === 'en' 
+        ? 'Thank you for your inquiry! We will contact you within 24 hours.'
+        : 'Mulțumim pentru interogare! Ne vom pune în legătură în 24 de ore.';
+      
+      alert(message);
+      form.reset();
+    }
+  </script>
+</body>
+</html>
