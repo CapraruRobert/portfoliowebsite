@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>A&E Photography and Films</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0a0a;--muted:#b0b8c1;--accent:#f5f5f7;--accent-2:#ff9f0a;--card-bg:#1a1a1a;--input-border:rgba(255,255,255,0.08);--shadow-dark:rgba(2,8,23,0.6);--shadow-light:rgba(15,20,25,0.06)}
+    :root.light-theme{--bg:#fafbfc;--muted:#4a5568;--accent:#0f1419;--accent-2:#ff9f0a;--card-bg:#f0f4f8;--input-border:rgba(0,0,0,0.08);--shadow-dark:rgba(2,8,23,0.06);--shadow-light:rgba(15,20,25,0.06)}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial; background:var(--bg); color:var(--accent); -webkit-font-smoothing:antialiased;transition:background 0.35s,color 0.35s}
+
+    /* Header */
+    :root{--header-height:72px}
+    header{position:fixed;top:0;left:0;right:0;backdrop-filter: blur(10px);background:linear-gradient(180deg, rgba(10,10,10,0.85), rgba(10,10,10,0.6));border-bottom:1px solid var(--input-border);transition:background 0.3s;z-index:999;height:var(--header-height);display:flex;align-items:center}
+    :root.light-theme header{background:linear-gradient(180deg, rgba(250,251,252,0.95), rgba(250,251,252,0.8));border-bottom-color:var(--input-border)}
+    /* ensure anchors are offset beneath fixed header */
+    body{padding-top:var(--header-height)}
+    main > section {scroll-margin-top: calc(var(--header-height) + 12px);}
+    .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;gap:2rem;height:100%}
+    .logo{font-weight:700;letter-spacing:2px;font-size:1.1rem;flex-shrink:0;min-width:120px}
+    nav{flex:1;display:flex;justify-content:center}
+    nav ul{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0}
+    nav a{color:var(--muted);text-decoration:none;font-size:0.98rem;transition:color 0.25s;position:relative;font-weight:500}
+    nav a::after{content:'';position:absolute;left:0;right:0;height:2px;background:transparent;bottom:-8px;border-radius:2px;transition:background 0.25s}
+    nav a:hover{color:var(--accent);}
+
+    /* Controls Container */
+    .controls{display:flex;align-items:center;gap:0.75rem;flex-shrink:0}
+
+    /* Theme switcher */
+    .theme-switcher{display:flex;gap:6px;padding:6px 8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:10px;border:1px solid var(--input-border);box-shadow:0 6px 20px var(--shadow-dark)}
+    :root.light-theme .theme-switcher{background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));box-shadow:0 6px 20px var(--shadow-light)}
+    .theme-btn{padding:8px 12px;border-radius:8px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:1rem;transition:all 0.25s;display:flex;align-items:center;justify-content:center;font-family:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Color Emoji', 'Segoe UI Emoji', 'Apple Color Emoji'}
+    .theme-btn.active{background:var(--accent-2);color:#0a0a0a;font-weight:700;box-shadow:0 6px 18px rgba(255,159,10,0.22)}
+
+    /* Language switcher */
+    .language-switcher{display:flex;gap:6px;padding:6px 8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:10px;border:1px solid var(--input-border)}
+    :root.light-theme .language-switcher{background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01))}
+    .lang-btn{padding:8px 12px;border-radius:8px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:0.9rem;font-weight:600;transition:all 0.25s;font-family:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Color Emoji', 'Segoe UI Emoji', 'Apple Color Emoji'}
+    .lang-btn.active{background:var(--accent-2);color:#0a0a0a;font-weight:700;box-shadow:0 6px 18px rgba(255,159,10,0.18)}
+
+    /* Hero */
+    .hero{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - var(--header-height));padding:4rem 1rem;max-width:1400px;margin:0 auto}
+    .hero-copy{flex:1;max-width:650px;text-align:left}
+    h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1.02;margin:0 0 0.6rem;color:var(--accent);font-family:'Playfair Display',serif;font-weight:700}
+    h2{font-family:'Playfair Display',serif;font-weight:700}
+    h3{font-family:'Playfair Display',serif;font-weight:700}
+    .eyebrow{color:var(--muted);text-transform:uppercase;letter-spacing:2px;font-size:0.85rem;margin-bottom:1rem}
+    p.lead{color:var(--muted);max-width:60ch;font-size:1.05rem}
+    .cta{margin-top:1.5rem;display:flex;gap:0.8rem}
+    .btn{background:transparent;border:1px solid var(--input-border);padding:0.75rem 1.2rem;border-radius:8px;color:var(--accent);cursor:pointer;transition:all 0.25s;font-weight:600}
+    .btn.primary{background:var(--accent-2);color:#0a0a0a;border:none;box-shadow:0 8px 24px rgba(255,159,10,0.12)}
+
+    /* Portfolio */
+    .portfolio{display:flex;flex-direction:column;justify-content:center;align-items:stretch;min-height:calc(100vh - var(--header-height));max-width:1400px;margin:0 auto;padding:4rem 1rem;padding-top:8rem}
+    #films.portfolio {display: flex;flex-direction: column;justify-content: center;align-items: stretch;min-height: calc(100vh - var(--header-height));}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:3rem}
+    .section-head h2{margin:0;font-size:2rem;letter-spacing:0.6px}
+    /* responsive, larger grid with bigger gaps */
+    /* Thumbnails: larger, squared-off corners, premium border & shadow */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:42px;margin-top:2.4rem;align-items:center}
+    .item{display:flex;flex-direction:column;gap:18px;align-items:stretch}
+    .item-img{position:relative;aspect-ratio:4/3;width:100%;height:auto;min-height:320px;max-height:600px;background:var(--card-bg);border-radius:0;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.04);box-shadow:0 22px 80px rgba(2,8,23,0.6);transition:transform .35s ease,box-shadow .35s,border-color .25s}
+    :root.light-theme .item-img{box-shadow:0 10px 30px rgba(15,20,25,0.06)}
+    .item-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));mix-blend-mode:overlay;pointer-events:none}
+    .item-img img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(8%) contrast(0.98);transition:transform .6s cubic-bezier(.2,.9,.3,1),filter .35s}
+    .item:hover .item-img{transform:translateY(-10px);border-color:rgba(255,159,10,0.12);box-shadow:0 36px 120px rgba(2,8,23,0.65)}
+    .item:hover .item-img img{transform:scale(1.06);filter:grayscale(0%) contrast(1)}
+    .item-title{font-size:1.28rem;font-weight:700;color:var(--accent);font-family:'Playfair Display',serif}
+    .item-img::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.06));pointer-events:none}
+    .meta{color:var(--muted);font-size:0.95rem;margin-top:8px;text-align:center}
+
+    /* About + Contact */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1400px;margin:0 auto;padding:6rem 1rem 4rem;min-height:calc(100vh - var(--header-height));align-content:center}
+    @media (max-width:900px){.two-col{grid-template-columns:1fr;}}
+    .card{background:var(--card-bg);padding:2.2rem 2rem;border-radius:12px;border:1px solid var(--input-border);box-shadow:0 14px 40px rgba(2,8,23,0.3);width:100%;max-width:700px;margin:0 auto;box-sizing:border-box;}
+    :root.light-theme .card{box-shadow:0 10px 30px rgba(15,20,25,0.06)}
+    .contact-cta{display:flex;flex-direction:column;gap:10px}
+
+    footer{max-width:1400px;margin:0 auto;padding:6rem 1rem 4rem;color:var(--muted);text-align:center;min-height:60vh;display:flex;flex-direction:column;justify-content:center}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:1001}
+    .modal.open{display:flex}
+    .modal-content{width:90%;max-width:1000px;background:var(--bg);border-radius:8px;overflow:hidden;border:1px solid var(--input-border)}
+    .modal-content iframe,.modal-content video{width:100%;height:60vh;background:#000}
+
+    /* Responsive */
+    @media (max-width:1200px){.grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}}
+    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}}
+    @media (max-width:520px){nav ul{display:none}.hero{padding:2rem;min-height:80vh}.grid{grid-template-columns:1fr;gap:20px}.item-img{min-height:220px}.portfolio{padding:2rem 1rem}.two-col{padding:2rem 1rem}.section-head h2{font-size:1.5rem}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">A&amp;E FILMS</div>
+      <nav>
+        <ul>
+          <li><a href="#home" data-en="Home" data-ro="Acasă">Home</a></li>
+          <li><a href="#films" data-en="Films" data-ro="Filme">Films</a></li>
+          <li><a href="#photos" data-en="Photos" data-ro="Foto">Photos</a></li>
+          <li><a href="#about" data-en="About" data-ro="Despre">About</a></li>
+          <li><a href="#contact" data-en="Contact" data-ro="Contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="controls">
+        <div class="theme-switcher">
+          <button class="theme-btn active" data-theme="dark" title="Dark Mode">🌙</button>
+          <button class="theme-btn" data-theme="light" title="Light Mode">☀️</button>
+        </div>
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ro">RO</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow" data-en="Wedding &amp; Baptism Videography" data-ro="Videografie Nuntă &amp; Botez">Wedding &amp; Baptism Videography</div>
+        <h1 data-en="Authentic cinematic films that feel timeless" data-ro="Filme cinematografice autentice, care rămân în timp">Authentic cinematic films that feel timeless</h1>
+        <p class="lead" data-en="We tell your story through cinematic rhythm and honest moments — highlight films, full ceremony edits and documentary storytelling. Based in Bucharest, available worldwide." data-ro="Povestim povestea ta prin ritm cinematic și momente sincere — filme highlight, editări complete ale ceremoniei și povestire documentară. Bazat în București, disponibil internațional.">We tell your story through cinematic rhythm and honest moments — highlight films, full ceremony edits and documentary storytelling. Based in Bucharest, available worldwide.</p>
+        <div class="cta">
+          <a class="btn primary" href="#films" data-en="View Films" data-ro="Vezi Filme">View Films</a>
+          <a class="btn" href="#contact" data-en="Get in Touch" data-ro="Contactează-ne">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio" id="films">
+      <div class="section-head">
+        <h2 data-en="Selected Films" data-ro="Filme Selectate">Selected Films</h2>
+        <div style="color:var(--muted);font-size:0.95rem" data-en="Recent highlights &amp; storytelling" data-ro="Cele mai recente momente &amp; povești">Recent highlights &amp; storytelling</div>
+      </div>
+
+      <div class="grid" id="portfolioGrid">
+          <div class="item">
+            <div class="item-img" data-src="https://player.vimeo.com/video/1140404609?autoplay=1&muted=1&title=0&byline=0&portrait=0" onclick="openModal(this)">
+              <img src="./thumbnails/Raluca.png" alt="Raluca &amp; Ioan - Civil wedding"/>
+            </div>
+            <div class="item-title" data-en="Raluca &amp; Ioan — Civil Wedding" data-ro="Raluca &amp; Ioan — Cununie Civilă">Raluca &amp; Ioan — Civil Wedding</div>
+          </div>
+        <div class="item">
+          <div class="item-img" data-src="https://player.vimeo.com/video/1140413083?autoplay=1&muted=1&title=0&byline=0&portrait=0" onclick="openModal(this)">
+            <img src="./thumbnails/Ariana.png" alt="Ariana &amp; Ioan civil wedding"/>
+          </div>
+          <div class="item-title" data-en="Ariana &amp; Ioan — Civil Wedding" data-ro="Ariana &amp; Ioan — Cununie Civilă">Ariana &amp; Ioan — Civil Wedding</div>
+        </div>
+
+        <div class="item">
+          <div class="item-img" data-src="https://player.vimeo.com/video/1140413189?autoplay=1&muted=1&title=0&byline=0&portrait=0" onclick="openModal(this)">
+            <img src="./thumbnails/Noah.png" alt="Noah Nicolas baptism"/>
+          </div>
+          <div class="item-title" data-en="Noah Nicolas — Baptism" data-ro="Noah Nicolas — Botez">Noah Nicolas — Baptism</div>
+        </div>
+
+        <div class="item">
+          <div class="item-img" data-src="#" onclick="openModal(this)">
+            <img src="./thumbnails/Natalia.png" alt="Natalia Valentina baptism"/>
+          </div>
+          <div class="item-title" data-en="Natalia Valentina — Baptism" data-ro="Natalia Valentina — Botez">Natalia Valentina — Baptism</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio" id="photos">
+      <div class="section-head">
+        <h2 data-en="Photo Albums" data-ro="Albume Foto">Photo Albums</h2>
+        <div style="color:var(--muted);font-size:0.95rem" data-en="Curated wedding &amp; baptism photo collections" data-ro="Colecții foto de nunți &amp; botezuri">Curated wedding &amp; baptism photo collections</div>
+      </div>
+
+      <div class="grid" id="photoGrid">
+        <div class="item">
+          <div class="item-img" data-src="#" onclick="openModal(this)">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=60&auto=format&fit=crop" alt="Wedding album"/>
+          </div>
+          <div class="meta"><span data-en="Wedding Highlights" data-ro="Momente de Nuntă">Wedding Highlights</span></div>
+        </div>
+
+        <div class="item">
+          <div class="item-img" data-src="#" onclick="openModal(this)">
+            <img src="https://images.unsplash.com/photo-1465146072230-91cabc968266?w=1200&q=60&auto=format&fit=crop" alt="Baptism album"/>
+          </div>
+          <div class="meta"><span data-en="Baptism Moments" data-ro="Momente de Botez">Baptism Moments</span></div>
+        </div>
+
+        <div class="item">
+          <div class="item-img" data-src="#" onclick="openModal(this)">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200&q=60&auto=format&fit=crop" alt="Ceremony details"/>
+          </div>
+          <div class="meta"><span data-en="Ceremony Details" data-ro="Detalii Ceremonie">Ceremony Details</span></div>
+        </div>
+
+        <div class="item">
+          <div class="item-img" data-src="#" onclick="openModal(this)">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=60&auto=format&fit=crop" alt="Portraits"/>
+          </div>
+          <div class="meta"><span data-en="Portraits" data-ro="Portrete">Portraits</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="two-col" id="about">
+      <div class="card">
+        <h3 style="margin-top:0" data-en="About A&amp;E Films" data-ro="Despre A&amp;E Films">About A&amp;E Films</h3>
+        <p style="color:var(--muted)" data-en="We are Alex &amp; Elena — a photographer &amp; videographer duo from Bucharest. We aim for natural storytelling, unobtrusive coverage and cinematic color grading. Every film is crafted to feel like a short film about your day." data-ro="Suntem Alex &amp; Elena — o echipă foto-video din București. Ne concentrăm pe povești naturale, acoperire discretă și corecție cromatică cinematografică. Fiecare film e realizat să se simtă ca un scurtmetraj despre ziua ta.">We are Alex &amp; Elena — a photographer &amp; videographer duo from Bucharest. We aim for natural storytelling, unobtrusive coverage and cinematic color grading. Every film is crafted to feel like a short film about your day.</p>
+
+        <ul style="color:var(--muted);margin-top:1rem">
+          <li data-en="Highlight films (3–7 min)" data-ro="Filme highlight (3–7 min)">Highlight films (3–7 min)</li>
+          <li data-en="Full ceremony edits" data-ro="Editări complete ale ceremoniei">Full ceremony edits</li>
+          <li data-en="Drone coverage &amp; multi-camera setup" data-ro="Acoperire cu dronă &amp; multi-camera">Drone coverage &amp; multi-camera setup</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0 0 8px 0" data-en="Contact" data-ro="Contact">Contact</h4>
+        <div style="color:var(--muted)">
+          <strong data-en="Email:" data-ro="Email:">Email:</strong> <a href="mailto:caprarurobert98@gmail.com" style="color:var(--accent);text-decoration:none">caprarurobert98@gmail.com</a>
+        </div>
+        <div style="color:var(--muted);margin-top:8px"><strong data-en="Phone:" data-ro="Telefon:">Phone:</strong> <a href="tel:+40722882566" style="color:var(--accent);text-decoration:none">+40 722 882 566</a></div>
+
+        <div class="contact-cta" style="margin-top:14px">
+          <a class="btn primary" href="#contact" data-en="Request Quote" data-ro="Cere Ofertă">Request Quote</a>
+          <a class="btn" href="#photos" data-en="See Films" data-ro="Vezi Filme">See Films</a>
+        </div>
+      </aside>
+    </section>
+
+    <section id="contact" style="max-width:1400px;margin:0 auto;padding:6rem 1rem 4rem;min-height:calc(100vh - var(--header-height));display:flex;align-items:center;justify-content:center">
+      <div class="card">
+        <h3 style="margin-top:0;font-size:2rem" data-en="Let's talk" data-ro="Hai să vorbim">Let's talk</h3>
+        <form action="https://formsubmit.co/aefotofilms@gmail.com" method="POST">
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <input name="name" placeholder="Name" data-placeholder-en="Name" data-placeholder-ro="Nume" required style="flex:1;padding:12px;border-radius:8px;border:1px solid var(--input-border);background:transparent;color:var(--accent);transition:all 0.3s;font-size:1rem" />
+            <input name="email" placeholder="Email" data-placeholder-en="Email" data-placeholder-ro="Email" required type="email" style="flex:1;padding:12px;border-radius:8px;border:1px solid var(--input-border);background:transparent;color:var(--accent);transition:all 0.3s;font-size:1rem" />
+          </div>
+          <textarea name="message" placeholder="Tell us about your event" data-placeholder-en="Tell us about your event" data-placeholder-ro="Spune-ne despre evenimentul tău" rows="6" required style="margin-top:12px;padding:12px;border-radius:8px;border:1px solid var(--input-border);width:100%;background:transparent;color:var(--accent);transition:all 0.3s;font-family:inherit;font-size:1rem"></textarea>
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="http://127.0.0.1:8000/eduard-inspired.html" />
+          <div style="margin-top:16px"><button class="btn primary" type="submit" data-en="Send" data-ro="Trimite">Send</button></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="display:flex;flex-direction:column;align-items:center;gap:1.2rem">
+    <span data-en="© 2025 A&amp;E Films — Cinematic Wedding &amp; Baptism Videography" data-ro="© 2025 A&amp;E Films — Videografie Cinematografică pentru Nunți &amp; Botezuri">© 2025 A&amp;E Films — Cinematic Wedding &amp; Baptism Videography</span>
+    <div style="display:flex;gap:1.2rem;justify-content:center">
+      <a href="https://www.instagram.com/aefotofilms/" target="_blank" rel="noopener noreferrer" title="Instagram" style="color:var(--muted);text-decoration:none;font-size:1.5rem;transition:color 0.3s" onmouseover="this.style.color='var(--accent)';" onmouseout="this.style.color='var(--muted)'">📷</a>
+      <a href="https://www.facebook.com/aefotofilms" target="_blank" rel="noopener noreferrer" title="Facebook" style="color:var(--muted);text-decoration:none;font-size:1.5rem;transition:color 0.3s" onmouseover="this.style.color='var(--accent)';" onmouseout="this.style.color='var(--muted)'">f</a>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal">
+      <div class="modal-content" id="modalContent">
+      <button style="position:absolute;right:12px;top:12px;z-index:70;background:transparent;border:0;color:var(--accent);font-size:1.2rem;padding:8px;cursor:pointer" onclick="closeModal()">✕</button>
+      <!-- video / iframe inserted dynamically -->
+    </div>
+  </div>
+
+  <script>
+    // Translations
+    const translations = {
+      en: {
+        noPreview: 'No preview available for this item.',
+        thanksMessage: "Thanks — we'll be in touch.",
+        modalClose: 'Close'
+      },
+      ro: {
+        noPreview: 'Previzualizare indisponibilă pentru acest element.',
+        thanksMessage: 'Mulțumim — te vom contacta în curând.',
+        modalClose: 'Închide'
+      }
+    };
+
+    let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+    let currentTheme = localStorage.getItem('preferredTheme') || 'dark';
+
+    function tr(key){
+      return (translations[currentLanguage] && translations[currentLanguage][key]) || translations.en[key] || '';
+    }
+
+    function setTheme(theme){
+      currentTheme = theme;
+      if(theme === 'light'){
+        document.documentElement.classList.add('light-theme');
+      } else {
+        document.documentElement.classList.remove('light-theme');
+      }
+      // update theme button states
+      document.querySelectorAll('.theme-btn').forEach(btn=>{
+        btn.classList.toggle('active', btn.getAttribute('data-theme')===theme);
+      });
+      localStorage.setItem('preferredTheme', theme);
+    }
+
+    function setLanguage(lang){
+      currentLanguage = lang;
+      // update html lang
+      document.documentElement.lang = lang;
+      // update lang button states
+      document.querySelectorAll('.lang-btn').forEach(btn=>{
+        btn.classList.toggle('active', btn.getAttribute('data-lang')===lang);
+      });
+      // translate elements with data-en
+      document.querySelectorAll('[data-en]').forEach(el=>{
+        const en = el.getAttribute('data-en');
+        const ro = el.getAttribute('data-ro');
+        if(lang==='en') el.textContent = en;
+        else if(lang==='ro' && ro) el.textContent = ro;
+      });
+      // translate placeholders
+      document.querySelectorAll('[data-placeholder-en]').forEach(el=>{
+        const pen = el.getAttribute('data-placeholder-en');
+        const pro = el.getAttribute('data-placeholder-ro');
+        el.placeholder = (lang==='en'? pen : pro || pen);
+      });
+      // update dynamic UI texts
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // initial setup
+    window.addEventListener('load', ()=>{
+      // attach listeners to theme buttons
+      document.querySelectorAll('.theme-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=> setTheme(btn.getAttribute('data-theme')));
+      });
+      // attach listeners to lang buttons
+      document.querySelectorAll('.lang-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=> setLanguage(btn.getAttribute('data-lang')));
+      });
+      setTheme(currentTheme);
+      setLanguage(currentLanguage);
+      // ensure modal close button label could use translation if needed
+    });
+
+    function openModal(el){
+      const src = el.getAttribute('data-src');
+      const modal = document.getElementById('modal');
+      const content = document.getElementById('modalContent');
+      content.innerHTML = '<button style="position:absolute;right:12px;top:12px;z-index:70;background:transparent;border:0;color:var(--accent);font-size:1.2rem;padding:8px;cursor:pointer" onclick="closeModal()">✕</button>';
+      if(!src || src === '#'){
+        content.innerHTML += '<div style="padding:40px;color:var(--muted)">' + tr('noPreview') + '</div>';
+      } else if(src.includes('youtube')){
+        content.innerHTML += '<iframe src="'+src+'?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      } else if(src.endsWith('.mp4') || src.endsWith('.mov')){
+        content.innerHTML += '<video controls autoplay src="'+src+'"></video>';
+      } else {
+        content.innerHTML += '<iframe src="'+src+'" frameborder="0" allowfullscreen></iframe>';
+      }
+      modal.classList.add('open');
+    }
+
+    function closeModal(){
+      const modal = document.getElementById('modal');
+      const content = document.getElementById('modalContent');
+      modal.classList.remove('open');
+      content.innerHTML = '';
+    }
+  </script>
+</body>
+</html>
